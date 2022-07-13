@@ -1,6 +1,15 @@
-<input type="text" [(ngModel)]="name">
 
-<ul>
-    <li *ngFor="let room of rooms" (click)="roomSelected(room.roomName)" >{{room.roomName}}</li>
-</ul>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-7 col-xl-4">
+            <label for="" class="form-label mt-5">User Name:</label>
+            <input class="form-control" type="text" [(ngModel)]="name" placeholder="Choose a Username">
+
+            <ul class="list-group mt-5">
+              <li class="list-group-item" *ngFor="let room of rooms" (click)="roomSelected(room.roomName)" >{{room.roomName}}</li>
+            </ul>
+
+        </div>
+    </div>
+</div>
 

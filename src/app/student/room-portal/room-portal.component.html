@@ -1,8 +1,15 @@
-<p>{{roomName}}</p>
 
-
-    <ul *ngFor="let student of roomMembers">
-    <li>{{student}}</li>
-</ul>
-
+<div class="container-fluid">
+    <div class="row">
+        Room: {{roomName}}
+        <div class="col-sm-12 col-md-7 col-xl-4">
+            <ul class="list-group mt-5">
+              <li class="list-group-item" *ngFor="let student of roomMembers">{{student.id}} <span *ngIf="student.playerTag" class="btn btn-secondary position-absolute top-0 end-0">{{student.playerTag}}</span></li>
+            </ul>
+        </div>
+    </div>
+    <input type="text" [(ngModel)]="id" class="form-control col-6">
+    <input type="text" [(ngModel)]="tag" class="form-control col-6">
+    <button class="btn btn-warning" (click)="sendTag()"></button>
+</div>
 

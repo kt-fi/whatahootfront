@@ -12,13 +12,18 @@ export class RoomPortalComponent implements OnInit {
   constructor(private activeRoute: ActivatedRoute, private webSocketService: WebsocketService) { }
   roomName?:any;
   roomMembers:any = []
+  playerTag:any;
 
+  id:string = ""
+  tag:string = ""
   ngOnInit(): void {
-    let roomName = this.activeRoute.snapshot.paramMap.get('roomName');
-    this.webSocketService.emit("Get Room Members", roomName);
+    this.roomName = this.activeRoute.snapshot.paramMap.get('roomName');
+    this.webSocketService.emit("Get Room Members", this.roomName);
     this.webSocketService.listen("Update Room Members").subscribe(data => this.roomMembers = data)
+    this.webSocketService.listen("Player Tag").subscribe(data => this.playerTag = data)
   }
 
-
-
+  sendTag(){
+    this.webSocketService.emit("Add Player Tag", {room: this.roomName, id: this.id, playerTag: this.tag})
+  }
 }

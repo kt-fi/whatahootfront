@@ -1,0 +1,13 @@
+$dark-green: #4AA96C;
+$light-green: #9FE6A0;
+$pastel-green: #94B49F;
+
+$dark-gray: #2B2B2B;
+$light-gray: #595260;
+.list-group-item{
+    background-color: $light-green;
+
+    &:hover {
+        background-color: $pastel-green;
+    }
+}

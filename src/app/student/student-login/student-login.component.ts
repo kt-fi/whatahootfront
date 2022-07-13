@@ -18,11 +18,9 @@ export class StudentLoginComponent implements OnInit, OnDestroy {
   rooms:any;
   subscription?:Subscription;
   ngOnInit(): void {
-    this.webSocketsService.listen('getRooms').subscribe((data)=>{
+    this.subscription = this.webSocketsService.listen('getRooms').subscribe((data)=>{
       this.rooms = data;
-      
     })
-    
   }
 
 
