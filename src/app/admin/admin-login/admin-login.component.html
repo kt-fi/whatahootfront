@@ -1,0 +1,22 @@
+<div class="container-fluid admin">
+    <div class="row"> 
+        <h2 class="admin__header col-sm-12"> Admin Login </h2>
+        <div class="position-absolute top-50 start-50 translate-middle">
+            
+        <form class="admin__form col-sm-12 col-md-7 col-xl-4" #formRef="ngForm" (ngSubmit)="submit(formRef)">
+            <label for="gameName" class="form-label fs-4"> Create New Game </label>
+            <input type="text" class="admin__form--input form-control" placeholder="Type a game name here" name="gameName" ngModel>
+            
+            <div class="col-12">
+               
+                    <input type="submit" class="btn btn-secondary admin__form--button col-6" />
+                    <input type="reset" class="btn btn-warning admin__form--button col-6" />  
+              
+              
+            </div>
+            
+        </form>
+        </div>
+        
+    </div>
+</div>
