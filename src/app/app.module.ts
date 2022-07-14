@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RoomPortalComponent } from './student/room-portal/room-portal.component';
 import { RouterModule } from '@angular/router';
+import { AdminGameControlComponent } from './admin/admin-game-control/admin-game-control.component';
+import { GameComponent } from './game/game.component';
 
 
 
@@ -18,7 +20,9 @@ import { RouterModule } from '@angular/router';
     AppComponent,
     AdminLoginComponent,
     StudentLoginComponent,
-    RoomPortalComponent
+    RoomPortalComponent,
+    AdminGameControlComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

@@ -14,21 +14,22 @@ export class StudentLoginComponent implements OnInit, OnDestroy {
 
    }
 
-   name?:any;
+  name?:any;
   rooms:any;
   subscription?:Subscription;
   ngOnInit(): void {
     this.subscription = this.webSocketsService.listen('getRooms').subscribe((data)=>{
       this.rooms = data;
     })
+  
   }
 
 
   roomSelected(room:string){
     console.log(room)
-    this.webSocketsService.emit("Join Room", {roomName:room, student:this.name});
+    this.webSocketsService.emit("Join Room", {roomName:room, student:this.name, userType: "student"});
     // let currentRoute = this.activeRoute.snapshot.routeConfig?.path;
-    this.route.navigate(["roomPortal/" + room])
+    this.route.navigate(["roomPortal/" + room + "/" + this.name])
   }
 
 ngOnDestroy(): void {

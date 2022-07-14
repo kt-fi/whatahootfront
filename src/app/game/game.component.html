@@ -1,0 +1,18 @@
+<h2>welcome {{playerName}} to the {{roomName}} game,
+<br>
+<p>You are playing as {{playerType}}</p>
+</h2>
+
+<div>
+
+    <div *ngIf="playerType == 'player1'">
+       <h1>answerer</h1> 
+    </div>
+    <div *ngIf="playerType == 'player2'">
+       <h1>question guy</h1> 
+    </div>
+    <div *ngIf="playerType == 'Admin'">
+       <h1> teacher</h1>
+    </div>
+
+</div>

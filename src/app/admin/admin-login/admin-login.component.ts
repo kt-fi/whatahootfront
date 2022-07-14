@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RoomsService } from 'src/app/socket/rooms.service';
 import { WebsocketService } from 'src/app/websocket.service';
 
@@ -14,7 +15,7 @@ export class AdminLoginComponent implements OnInit {
 
   gameName: string = "";
 
-  constructor(private webSocketsService: WebsocketService) { }
+  constructor(private webSocketsService: WebsocketService, private activeRoute:ActivatedRoute, private route: Router) { }
   rooms:any;
   ngOnInit(): void {
     this.webSocketsService.listen('getRooms').subscribe((data)=>{
@@ -29,6 +30,8 @@ export class AdminLoginComponent implements OnInit {
     
     this.gameName = gameName; 
     this.webSocketsService.emit("newRoom", {roomName: gameName, students: []});
+    this.route.navigate(["adminPortal/" + gameName])
+
   }
 
 }
