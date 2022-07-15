@@ -16,6 +16,7 @@ export class AdminGameControlComponent implements OnInit {
   constructor(private activeRoute: ActivatedRoute, private route: Router, private webSocketService: WebsocketService) { }
 
   ngOnInit(): void {
+    
     this.roomName = this.activeRoute.snapshot.paramMap.get('roomName')
     this.webSocketService.emit("Get Room Members", this.roomName)
     this.webSocketService.listen("Update Room Members").subscribe((data)=>{

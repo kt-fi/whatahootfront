@@ -30,6 +30,7 @@ export class AdminLoginComponent implements OnInit {
     
     this.gameName = gameName; 
     this.webSocketsService.emit("newRoom", {roomName: gameName, students: []});
+    this.webSocketsService.emit("Join Room", {roomName: gameName, student: "admin", playerTag: "admin"})
     this.route.navigate(["adminPortal/" + gameName])
 
   }

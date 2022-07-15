@@ -3,16 +3,16 @@
     <div class="row">
         <img class="game-room__header" src="../../../assets/gameroom.png" alt="">
         <h3>
-            {{roomName}}
+            
         </h3>
         <div class="col-sm-12 col-md-7 col-xl-4 game-room__members">
             <ul class="list-group mt-5">
               <li class="list-group-item game-room__members--member" *ngFor="let student of roomMembers">{{student.student}}
-                 <span class="game-room__dropdown--span position-absolute top-0 end-0">
+                 <span *ngIf="student.student != 'admin'" class="game-room__dropdown--span position-absolute top-0 end-0">
                     <!-- {{student.playerTag}} -->
-                    <li class=" dropdown">
-                        <a class="game-room__dropdown nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            {{student.playerTag ? student.playerTag : 'Player Role'}}
+                    <li class="dropdown">
+                        <a  class="game-room__dropdown nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            {{student.playerTag ? student.playerTag : 'Choose Role'}}
                         </a>
                         <div class="dropdown-menu">
                             <li class="dropdown-item" (click)="setPlayer(student.id, 'host')">Host</li>
@@ -26,6 +26,6 @@
             </ul>
         </div>
     </div>
-    <button class="btn btn-danger game-room__button--start" (click)="startGame()">Start</button>
+    <button class="btn btn-primary game-room__button--start" (click)="startGame()">Start</button>
 </div>
 
