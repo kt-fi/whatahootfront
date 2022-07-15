@@ -34,4 +34,10 @@ export class AdminGameControlComponent implements OnInit {
     this.webSocketService.emit("Start Game", this.roomName)
   }
 
+  setPlayer(id:any, tag:any){
+    this.id = id;
+    this.tag = tag;
+    this.sendTag()
+  }
+
 }

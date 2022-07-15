@@ -11,6 +11,7 @@ import { RoomPortalComponent } from './student/room-portal/room-portal.component
 import { RouterModule } from '@angular/router';
 import { AdminGameControlComponent } from './admin/admin-game-control/admin-game-control.component';
 import { GameComponent } from './game/game.component';
+import { DropdownDirective } from 'shared/dropdown.directive';
 
 
 
@@ -22,7 +23,8 @@ import { GameComponent } from './game/game.component';
     StudentLoginComponent,
     RoomPortalComponent,
     AdminGameControlComponent,
-    GameComponent
+    GameComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,

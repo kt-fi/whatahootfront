@@ -1,0 +1,63 @@
+$dark-green: #4AA96C;
+$light-green: #9FE6A0;
+$pastel-green: #94B49F;
+
+$dark-gray: #2B2B2B;
+$light-gray: #595260;
+
+.list-group-item{
+    background-color: $light-green;
+}
+
+.game-room{
+    text-align: center;
+
+    &__header{
+        margin: 0 auto;
+        margin-top: 5rem;
+        margin-bottom: 1rem;;
+        width: 80%;
+        max-width: 300px;
+
+    }
+
+    &__members{
+        text-align: left;
+        margin: 0 auto;
+
+        &--member{
+            height: 50px;
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+    }
+
+    &__button--start{
+        position: absolute;
+        height: 150px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+        width: 100%;
+        margin: 10px 0px 0 0;
+        font-size: 1.3rem;
+        bottom: 0;
+        left:0
+    }
+
+    &__dropdown{
+    background-color: #9FE6A0;
+    
+
+    &--span{
+        width: 25%;
+        text-align: right;
+        background-color: $light-green;
+    }
+}
+}
+
+
+li{
+    list-style: none;
+}

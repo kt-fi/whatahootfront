@@ -6,5 +6,6 @@ $dark-gray: #2B2B2B;
 $light-gray: #595260;
 
 *{
+    box-sizing: border-box;
     background-color: $dark-green;
 }

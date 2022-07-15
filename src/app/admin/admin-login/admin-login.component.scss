@@ -1,20 +1,42 @@
 .admin{
     text-align: center;
 
+    &__logo{
+        margin: 0 auto;
+        margin-top: 8rem;
+        max-width: 100%;
+    }
+
     &__header{
+        margin: 0 auto;
         margin-top: 5rem;
-        font-weight: 700;
+        margin-bottom: 4rem;;
+        width: 70%;
+        max-width: 300px;
+        
     }
 
     &__form{
         margin: 0 auto;
         text-align: left;
+        padding: 10px;
         &--input{
-        
+            height: 60px;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
 
         &--button{
-            margin: 5px 0px 0 0
+            width: 100%;
+            margin: 10px 0px 0 0;
+            font-size: 1.3rem;
+
+            &:first-child{
+                height: 150px;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: 2rem;
+                font-weight: 800;
+            }
         }
     }
 }

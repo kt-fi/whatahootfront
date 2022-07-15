@@ -1,11 +1,17 @@
 
-<div class="container-fluid">
+<div class="container-fluid student">
     <div class="row">
-        <div class="col-sm-12 col-md-7 col-xl-4">
-            <label for="" class="form-label mt-5">User Name:</label>
-            <input class="form-control" type="text" [(ngModel)]="name" placeholder="Choose a Username">
-
-            <ul class="list-group mt-5">
+        <div class="col-12">
+            <img class="mt-5 student__logo" src="../../../assets/cooltext415324505318203.png" alt="">
+       </div>
+       <div class="col-12">
+        <img src="../../../assets/studentlogin.png" class="student__header col-sm-12" alt="">
+       </div>   
+       
+        <div class="col-sm-12 col-md-7 col-xl-4 main-div">
+            <input class="form-control student__name--input" type="text" [(ngModel)]="name" placeholder="Choose a Username">
+            <img class="student__header--chooseRoom" src="../../../assets/selectgame.png" alt="">
+            <ul class="list-group mt-2">
               <li class="list-group-item" *ngFor="let room of rooms" (click)="roomSelected(room.roomName)" >{{room.roomName}}</li>
             </ul>
 

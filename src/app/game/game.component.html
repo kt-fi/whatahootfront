@@ -1,18 +1,96 @@
-<h2>welcome {{playerName}} to the {{roomName}} game,
-<br>
-<p>You are playing as {{playerType}}</p>
-</h2>
 
-<div>
+<div class="container-fluid">
+    <div class="row game-room">
+        <img class="game-room__header" src="../../../assets/gameroom.png" alt="">
+            <h4>You are playing as {{playerType == 'Admin' ? 'Teacher' : playerType}}</h4>
 
-    <div *ngIf="playerType == 'player1'">
-       <h1>answerer</h1> 
-    </div>
-    <div *ngIf="playerType == 'player2'">
-       <h1>question guy</h1> 
-    </div>
-    <div *ngIf="playerType == 'Admin'">
-       <h1> teacher</h1>
-    </div>
 
+            <div class="center col-sm-12 col-md-6 col-lg-5" *ngIf="playerType == 'contestant'">
+            
+                <h4>The Game Host is {{'HostName'}}</h4>
+                <div class="card">
+                    <h4 class="card-header">Game Time Remaining</h4>
+                    <h1 class="card-body">{{mins}}:{{seconds}}</h1>  
+                </div>
+                
+                   
+            
+                
+                
+                <h3>Possible Answers</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">LIST OF PLAYERS</li>
+                    <li class="list-group-item">LIST OF PLAYERS</li>
+                    <li class="list-group-item">LIST OF PLAYERS</li>
+                    <li class="list-group-item">LIST OF PLAYERS</li>
+                    <li class="list-group-item">LIST OF PLAYERS</li>         
+                </ul>
+            </div>
+
+
+
+            <div class=" center col-sm-12 col-md-6 col-lg-5" *ngIf="playerType == 'host'">
+                <h4>The Game Host is {{'HostName'}}</h4>
+                <div class="card">
+                    <h4 class="card-header">Game Time Remaining</h4>
+                    <h1 class="card-body">{{mins}}:{{seconds}}</h1>  
+                </div>
+                
+                  Dropdown to select subject
+                   
+                <div class="card">
+                    <h5 class="card-header">Current Word</h5>
+                       <h6 class="card-body">Example</h6>  
+                </div>
+                
+              
+                
+                <h3>Current Contestants</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">LIST OF PLAYERS</li>
+                    <li class="list-group-item">LIST OF PLAYERS</li>
+                    <li class="list-group-item">LIST OF PLAYERS</li>
+                    <li class="list-group-item">LIST OF PLAYERS</li>
+                    <li class="list-group-item">LIST OF PLAYERS</li>         
+                </ul>
+
+            <button class="btn btn-primary">Next Question</button>
+            </div>
+
+
+
+
+
+            <div class="center col-sm-12 col-md-6 col-lg-5" *ngIf="playerType == 'Admin'">
+                <h4>The Game Host is {{'HostName'}}</h4>
+                <div class="card">
+                    <h4 class="card-header">Game Time Remaining</h4>
+                    <h1 class="card-body">{{mins}}:{{seconds}}</h1>  
+                </div>
+                
+                   
+                <div class="card">
+                    <h5 class="card-header">Current Word</h5>
+                    <h6 class="card-body">Example</h6>  
+                </div>
+                
+                
+                <h3>Current Contestants</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">LIST OF PLAYERS</li>
+                    <li class="list-group-item">LIST OF PLAYERS</li>
+                    <li class="list-group-item">LIST OF PLAYERS</li>
+                    <li class="list-group-item">LIST OF PLAYERS</li>
+                    <li class="list-group-item">LIST OF PLAYERS</li>         
+                </ul>
+
+            <button class="btn btn-primary" (click)="startTimer()">Start Game</button>
+            </div>
+
+        </div>
+     
 </div>
+
+
+
+
