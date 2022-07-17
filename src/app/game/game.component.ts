@@ -30,6 +30,10 @@ export class GameComponent implements OnInit {
   constructor(private activeRoute:ActivatedRoute, private webSocketService: WebsocketService) { }
 
   ngOnInit(): void {
+
+    this.webSocketService.listen("error").subscribe((err)=>{
+      alert("Error")
+    })
     
     this.playerName = this.activeRoute.snapshot.paramMap.get("player");
     this.roomName = this.activeRoute.snapshot.paramMap.get("roomName");
@@ -43,10 +47,7 @@ export class GameComponent implements OnInit {
     }
     })
 
-      this.webSocketService.listen("Start Timer").subscribe((data)=>{
-        console.log("data")
-        this.timer()
-      })
+      
 
       this.webSocketService.emit("Get Room Members", this.roomName)
       this.webSocketService.listen("Update Room Members").subscribe((data)=>{
