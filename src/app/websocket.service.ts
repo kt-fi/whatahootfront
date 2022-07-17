@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import io from 'socket.io-client';
 import { Observable, Subject } from 'rxjs';
-import {environment} from '../environments/environment'
+import {environment} from '../environments/environment.prod'
 
 
 @Injectable({
@@ -10,7 +10,7 @@ import {environment} from '../environments/environment'
 export class WebsocketService {
   rooms:any = new Subject();
   socket: any;
-  uri: string = 'https://pure-wave-61675.herokuapp.com/';
+  uri: string = environment.url;
 
 
   constructor() { 

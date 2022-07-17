@@ -14,6 +14,10 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
   
+    // this.webSocketsService.listen("err").subscribe((err)=>{
+    //   alert("Error")
+    // })
+
     this.webSocketsService.emit('test event', "hello")
     this.webSocketsService.listen('getRooms').subscribe((data)=>{
 

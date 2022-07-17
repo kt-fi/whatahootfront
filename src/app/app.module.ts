@@ -12,7 +12,10 @@ import { RouterModule } from '@angular/router';
 import { AdminGameControlComponent } from './admin/admin-game-control/admin-game-control.component';
 import { GameComponent } from './game/game.component';
 import { DropdownDirective } from 'shared/dropdown.directive';
-
+import { ErrorComponent } from './error/error/error.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TimerComponent } from './game/components/timer/timer.component';
+import { CurrentwordComponent } from './game/components/currentword/currentword.component';
 
 
 @NgModule({
@@ -24,14 +27,18 @@ import { DropdownDirective } from 'shared/dropdown.directive';
     RoomPortalComponent,
     AdminGameControlComponent,
     GameComponent,
-    DropdownDirective
+    DropdownDirective,
+    ErrorComponent,
+    TimerComponent,
+    CurrentwordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
