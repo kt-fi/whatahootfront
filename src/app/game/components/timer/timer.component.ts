@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 import { WebsocketService } from 'src/app/websocket.service';
 
 @Component({
@@ -7,16 +9,28 @@ import { WebsocketService } from 'src/app/websocket.service';
   styleUrls: ['./timer.component.scss']
 })
 export class TimerComponent implements OnInit {
-
+  roomName:any;
   
   seconds:any = 0;
   mins:any = 2;
   countdown?: any;
   timerActive: any;
 
-  constructor(private webSocketService: WebsocketService) { }
+
+
+  @Input()
+  timerStart?: Observable<void>
+
+  constructor(private webSocketService: WebsocketService, private activeRoute:ActivatedRoute) { }
+
 
   ngOnInit(): void {
+
+    this.timerStart?.subscribe(()=>{
+      this.webSocketService.emit("Start Timer", this.roomName)
+    })
+
+    this.roomName = this.activeRoute.snapshot.paramMap.get("roomName");
 
     this.webSocketService.listen("Start Timer").subscribe((data)=>{
       console.log("data")
@@ -57,6 +71,8 @@ export class TimerComponent implements OnInit {
   this.seconds = 0;
   this.mins = 2;
 }
+
+
 
 
 }

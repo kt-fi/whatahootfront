@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 import { WebsocketService } from '../websocket.service';
 
 @Component({
@@ -20,6 +21,9 @@ export class GameComponent implements OnInit {
 
   roomMembers: any;
 
+
+  timerSubject:Subject<void> = new Subject()
+
   seconds:any = 0;
   mins:any = 2;
   countdown?: any;
@@ -30,10 +34,6 @@ export class GameComponent implements OnInit {
   constructor(private activeRoute:ActivatedRoute, private webSocketService: WebsocketService) { }
 
   ngOnInit(): void {
-
-    this.webSocketService.listen("error").subscribe((err)=>{
-      alert("Error")
-    })
     
     this.playerName = this.activeRoute.snapshot.paramMap.get("player");
     this.roomName = this.activeRoute.snapshot.paramMap.get("roomName");
@@ -60,47 +60,22 @@ export class GameComponent implements OnInit {
         this.question = data;
       })
 
-      this.webSocketService.listen("Reset Timer").subscribe(()=>{
-        this.resetTimer()
-      })
-
+  
       this.webSocketService.listen("Update Scores").subscribe((data)=> {
         this.roomMembers = data;
       })
 
   }
 
+  // startTimer(){
+  //   this.webSocketService.emit("Start Timer", this.roomName)
+  // }
+
   startTimer(){
-    this.webSocketService.emit("Start Timer", this.roomName)
+    this.timerSubject.next();
   }
 
   
- timer(){
-    if(this.mins >= 0){
-        this.countdown =  setTimeout(()=>{
-                        if(this.seconds < 10 && this.seconds > 0){
-                    
-                            this.seconds--;  
-                        }else if(this.seconds >=10 && this.seconds < 61){
-                        
-                            this.seconds--;  
-                        }else if(this.seconds <= 0){
-                            this.mins--;
-                            this.seconds = 59;      
-                        }
-       this.timer()
-     }, 1000)
-    }else{
-      this.mins = "TIME"
-      this.seconds = "UP"
-    }
-     
- }
-
- resetTimer(){
-  this.seconds = 0;
-  this.mins = 2;
-}
 
 nextQuestion(){
   this.webSocketService.emit("Reset Timer", this.roomName)

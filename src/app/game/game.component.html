@@ -8,10 +8,7 @@
             <div class="center col-sm-12 col-md-6 col-lg-5" *ngIf="player.playerTag == 'contestant'">
             
                 <h4>The Game Host is {{'HostName'}}</h4>
-                <!-- <div class="card">
-                    <h4 class="card-header">Game Time Remaining</h4>
-                    <h1 class="card-body">{{mins}}:{{seconds}}</h1>  
-                </div> -->
+    
                 <app-timer></app-timer>
                    
             
@@ -27,19 +24,11 @@
 
             <div class=" center col-sm-12 col-md-6 col-lg-5" *ngIf="player.playerTag == 'host'">
                 <h4>The Game Host is {{'HostName'}}</h4>
-                <!-- <div class="card">
-                    <h4 class="card-header">Game Time Remaining</h4>
-                    <h1 class="card-body">{{mins}}:{{seconds}}</h1>  
-                </div> -->
+  
                 <app-timer></app-timer>
                 
                   Dropdown to select subject
                    
-                <!-- <div class="card">
-                    <h5 class="card-header">Current Word</h5>
-                       <h6 class="card-body">{{question ? question.word : 'Press Next Question To Start'}}</h6>  
-                </div>
-                 -->
                  <app-currentword></app-currentword>
               
                 
@@ -57,19 +46,8 @@
 
             <div class="center col-sm-12 col-md-6 col-lg-5" *ngIf="player.playerTag == null">
                 <h4>The Game Host is {{'HostName'}}</h4>
-                <!-- <div class="card">
-                    <h4 class="card-header">Game Time Remaining</h4>
-                    <h1 class="card-body">{{mins}}:{{seconds}}</h1>  
-                </div> -->
-                <app-timer></app-timer>
-                
-                   
-                <!-- <div class="card">
-                    <h5 class="card-header">Current Word</h5>
-                    <h6 class="card-body">{{question ? question.word : 'Please Wait For Game To Start'}}</h6>  
-                </div> -->
+                <app-timer [timerStart]="timerSubject.asObservable()"></app-timer>
                 <app-currentword></app-currentword>
-                
                 
                 <h3>Current Contestants</h3>
                 <ul class="list-group">
