@@ -13,7 +13,7 @@ export class CurrentwordContestantComponent implements OnInit {
   player: any = ""
 
   question?:any;
-  
+  answered: boolean = false;
   
   newWord:any;
   playerName:any;
@@ -32,7 +32,9 @@ export class CurrentwordContestantComponent implements OnInit {
   //  })
    
   this.webSocketService.listen("Get Question").subscribe((data) => {
+    
     this.question = data;
+    this.answered = false;
   })
    this.webSocketService.listen("Get Player Type").subscribe((data:any)=> {
     if(data.playerTag!= null){
@@ -45,6 +47,7 @@ export class CurrentwordContestantComponent implements OnInit {
 
   selectAnswer(givenAnswer:any, id:any){
     let answer = this.question.correct;
+    this.answered = true;
     if(this.question.answers[answer] === givenAnswer){
       this.webSocketService.emit("Answered Question", {answer: "Correct", room: this.roomName, id:id})
     }else{

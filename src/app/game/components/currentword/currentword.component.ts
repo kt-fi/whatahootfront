@@ -31,7 +31,7 @@ export class CurrentwordComponent implements OnInit, OnDestroy {
        this.webSocketService.emit("Get Question", this.roomName)
     })
 
-    this.subscriptionTwo = this.webSocketService.listen("Get Question").subscribe((data) => {
+    this.subscriptionTwo = this.webSocketService.listen("Get Question").subscribe((data:any) => {
       this.question = data;
       // this.gameService.getQuestion(data)
     })
