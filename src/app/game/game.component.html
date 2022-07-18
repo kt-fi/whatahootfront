@@ -4,31 +4,51 @@
         <img class="game-room__header" src="../../../assets/gameroom.png" alt="">
             <h4>You are playing as {{player.playerTag == null ? 'Teacher' : player.playerTag}}</h4>
 
-            <!-- CONTERSTANT -->
+
             <div class="center col-sm-12 col-md-6 col-lg-5" *ngIf="player.playerTag == 'contestant'">
+            
                 <h4>The Game Host is {{'HostName'}}</h4>
-                <app-timer  [timerStart]="timerSubject.asObservable()"></app-timer>
-                <app-currentword-contestant></app-currentword-contestant>
+    
+                <app-timer></app-timer>
+                   
+            
+                
+                
+                <h3>Possible Answers</h3>
+                <ul *ngIf="question" class="list-group">
+                    <li *ngFor="let option of question.answers" value="option" class="list-group-item"  (click)="selectAnswer(option, player.id)"> {{option}} </li>       
+                </ul>
             </div>
 
-            <!-- HOST -->
+
+
             <div class=" center col-sm-12 col-md-6 col-lg-5" *ngIf="player.playerTag == 'host'">
                 <h4>The Game Host is {{'HostName'}}</h4>
-                <app-timer  [timerStart]="timerSubject.asObservable()"></app-timer>
-                 <!-- Dropdown to select subject --> 
-                 <app-currentword [newWord]="wordSubject.asObservable()"></app-currentword>
+  
+                <app-timer></app-timer>
+                
+                  Dropdown to select subject
+                   
+                 <app-currentword></app-currentword>
+              
+                
                 <h3>Current Contestants</h3>
                 <ul class="list-group">
                     <li *ngFor="let player of roomMembers" class="list-group-item">{{player.student}} <span *ngIf="player.ansQuestion" class="game-room__contestant--marks">Answered</span> </li>
                 </ul>
-            <button class="btn btn-primary" (click)="newWord()">Next Question</button>
+
+            <button class="btn btn-primary" (click)="nextQuestion()">Next Question</button>
             </div>
 
-            <!-- GAME ADMIN -->
+
+
+
+
             <div class="center col-sm-12 col-md-6 col-lg-5" *ngIf="player.playerTag == null">
                 <h4>The Game Host is {{'HostName'}}</h4>
                 <app-timer [timerStart]="timerSubject.asObservable()"></app-timer>
                 <app-currentword></app-currentword>
+                
                 <h3>Current Contestants</h3>
                 <ul class="list-group">
                     <li *ngFor="let player of roomMembers" class="list-group-item">{{player.student}} 
@@ -40,9 +60,12 @@
                         </span>
                     </li>
                 </ul>
+
             <button class="btn btn-primary" (click)="startTimer()">Start Game</button>
             </div>
+
         </div>
+     
 </div>
 
 
