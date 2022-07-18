@@ -32,7 +32,6 @@ export class AdminGameControlComponent implements OnInit, OnDestroy {
       this.route.navigate([`game/${this.roomName}/admin`])
     })
     )
-   
   }
 
   sendTag(){
@@ -49,10 +48,9 @@ export class AdminGameControlComponent implements OnInit, OnDestroy {
     this.sendTag()
   }
 
-ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.subscriptions?.forEach((subscription:Subscription)=>{
       subscription.unsubscribe()
     })
 }
-
 }

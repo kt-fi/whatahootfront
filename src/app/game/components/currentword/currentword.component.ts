@@ -35,7 +35,6 @@ export class CurrentwordComponent implements OnInit, OnDestroy {
       this.question = data;
       // this.gameService.getQuestion(data)
     })
-
   }
 
   ngOnDestroy(): void {

@@ -26,8 +26,7 @@ import { WebsocketService } from 'src/app/websocket.service';
       ('0.5s')
   ])
   ])
-    ]
-    
+  ]
 })
 export class ErrorComponent implements OnInit, OnDestroy {
 
@@ -50,5 +49,4 @@ export class ErrorComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
       this.subscription?.unsubscribe();
   }
-
 }

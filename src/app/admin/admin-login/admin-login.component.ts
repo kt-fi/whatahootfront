@@ -27,8 +27,6 @@ export class AdminLoginComponent implements OnInit, OnDestroy {
     })
   }
 
-
-
   submit(formRef: NgForm){
     let gameName = formRef.value.gameName;
     
@@ -36,11 +34,9 @@ export class AdminLoginComponent implements OnInit, OnDestroy {
     this.webSocketsService.emit("newRoom", {roomName: gameName, students: []});
     this.webSocketsService.emit("Join Room", {roomName: gameName, student: "admin", playerTag: "admin"})
     this.route.navigate(["adminPortal/" + gameName])
-
   }
 
   ngOnDestroy(): void {
       this.subscription?.unsubscribe();
   }
-
 }
