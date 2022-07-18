@@ -23,6 +23,7 @@ export class GameComponent implements OnInit {
 
 
   timerSubject:Subject<void> = new Subject()
+  wordSubject:Subject<void> = new Subject();
 
   seconds:any = 0;
   mins:any = 2;
@@ -67,10 +68,6 @@ export class GameComponent implements OnInit {
 
   }
 
-  // startTimer(){
-  //   this.webSocketService.emit("Start Timer", this.roomName)
-  // }
-
   startTimer(){
     this.timerSubject.next();
   }
@@ -78,8 +75,8 @@ export class GameComponent implements OnInit {
   
 
 nextQuestion(){
-  this.webSocketService.emit("Reset Timer", this.roomName)
-  this.webSocketService.emit("Get Question", this.roomName)
+
+  this.wordSubject.next();
 }
 
 
