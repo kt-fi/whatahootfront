@@ -68,6 +68,10 @@ export class GameComponent implements OnInit {
 
   }
 
+  // startTimer(){
+  //   this.webSocketService.emit("Start Timer", this.roomName)
+  // }
+
   startTimer(){
     this.timerSubject.next();
   }
@@ -75,7 +79,8 @@ export class GameComponent implements OnInit {
   
 
 nextQuestion(){
-
+  // this.webSocketService.emit("Reset Timer", this.roomName)
+  // this.webSocketService.emit("Get Question", this.roomName)
   this.wordSubject.next();
 }
 

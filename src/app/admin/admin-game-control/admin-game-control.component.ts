@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { WebsocketService } from 'src/app/websocket.service';
 
 @Component({
@@ -7,24 +8,31 @@ import { WebsocketService } from 'src/app/websocket.service';
   templateUrl: './admin-game-control.component.html',
   styleUrls: ['./admin-game-control.component.scss']
 })
-export class AdminGameControlComponent implements OnInit {
+export class AdminGameControlComponent implements OnInit, OnDestroy {
+
+  subscriptions?:Subscription[] = [];
 
   roomName?:any;
   roomMembers?:any = []
   id:string = ""
   tag:string = ""
+  
   constructor(private activeRoute: ActivatedRoute, private route: Router, private webSocketService: WebsocketService) { }
 
   ngOnInit(): void {
     
     this.roomName = this.activeRoute.snapshot.paramMap.get('roomName')
     this.webSocketService.emit("Get Room Members", this.roomName)
-    this.webSocketService.listen("Update Room Members").subscribe((data)=>{
+    
+    this.subscriptions?.push(
+      this.webSocketService.listen("Update Room Members").subscribe((data)=>{
       this.roomMembers = data;
-    })
-    this.webSocketService.listen("Start Game").subscribe((data)=>{
+    }),
+      this.webSocketService.listen("Start Game").subscribe((data)=>{
       this.route.navigate([`game/${this.roomName}/admin`])
     })
+    )
+   
   }
 
   sendTag(){
@@ -40,5 +48,11 @@ export class AdminGameControlComponent implements OnInit {
     this.tag = tag;
     this.sendTag()
   }
+
+ngOnDestroy(): void {
+    this.subscriptions?.forEach((subscription:Subscription)=>{
+      subscription.unsubscribe()
+    })
+}
 
 }

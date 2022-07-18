@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { WebsocketService } from 'src/app/websocket.service';
 
 
@@ -28,20 +29,26 @@ import { WebsocketService } from 'src/app/websocket.service';
     ]
     
 })
-export class ErrorComponent implements OnInit {
+export class ErrorComponent implements OnInit, OnDestroy {
+
+  subscription?:Subscription;
 
   error:string | any = "";
   isOpen:boolean = false
   constructor(private webSocketService: WebsocketService) { }
 
   ngOnInit(): void {
-    this.webSocketService.listen('error').subscribe((data)=>{
+   this.subscription = this.webSocketService.listen('error').subscribe((data)=>{
       this.error = data;
       this.isOpen = true;
       setTimeout(()=>{
         this.isOpen = false;
       }, 8000)
     })
+  }
+
+  ngOnDestroy(): void {
+      this.subscription?.unsubscribe();
   }
 
 }

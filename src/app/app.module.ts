@@ -16,6 +16,7 @@ import { ErrorComponent } from './error/error/error.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TimerComponent } from './game/components/timer/timer.component';
 import { CurrentwordComponent } from './game/components/currentword/currentword.component';
+import { CurrentwordContestantComponent } from './game/components/currentword-contestant/currentword-contestant.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CurrentwordComponent } from './game/components/currentword/currentword.
     DropdownDirective,
     ErrorComponent,
     TimerComponent,
-    CurrentwordComponent
+    CurrentwordComponent,
+    CurrentwordContestantComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { WebsocketService } from 'src/app/websocket.service';
@@ -8,7 +8,10 @@ import { WebsocketService } from 'src/app/websocket.service';
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.scss']
 })
-export class TimerComponent implements OnInit {
+export class TimerComponent implements OnInit, OnDestroy {
+
+  subscriptions?:Subscription[];
+  subscription?:Subscription;
   roomName:any;
   
   seconds:any = 0;
@@ -26,20 +29,22 @@ export class TimerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.timerStart?.subscribe(()=>{
+  this.timerStart?.subscribe(()=>{
       this.webSocketService.emit("Start Timer", this.roomName)
     })
 
     this.roomName = this.activeRoute.snapshot.paramMap.get("roomName");
 
-    this.webSocketService.listen("Start Timer").subscribe((data)=>{
-      console.log("data")
+  
+       this.webSocketService.listen("Start Timer").subscribe(()=>{
       this.timer()
-    })
-
+    }),
     this.webSocketService.listen("Reset Timer").subscribe(()=>{
       this.resetTimer()
     })
+    
+    
+   
 
   }
 
@@ -72,7 +77,12 @@ export class TimerComponent implements OnInit {
   this.mins = 2;
 }
 
-
+ngOnDestroy(): void {
+  this.subscription?.unsubscribe();
+    this.subscriptions?.forEach((subscription)=>{
+      subscription.unsubscribe()
+    })
+}
 
 
 }

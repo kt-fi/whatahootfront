@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { WebsocketService } from 'src/app/websocket.service';
 import { GameService } from '../../game.service';
 
@@ -9,8 +9,11 @@ import { GameService } from '../../game.service';
   templateUrl: './currentword.component.html',
   styleUrls: ['./currentword.component.scss']
 })
-export class CurrentwordComponent implements OnInit {
+export class CurrentwordComponent implements OnInit, OnDestroy {
 
+
+  subscription?:Subscription;
+  subscriptionTwo?:Subscription;
   @Input()
   newWord?:Observable<void>;
 
@@ -23,16 +26,21 @@ export class CurrentwordComponent implements OnInit {
 
     this.roomName = this.activeRoute.snapshot.paramMap.get("roomName")
 
-    this.newWord?.subscribe(()=>{
+    this.subscription = this.newWord?.subscribe(()=>{
        this.webSocketService.emit("Reset Timer", this.roomName)
        this.webSocketService.emit("Get Question", this.roomName)
     })
 
-    this.webSocketService.listen("Get Question").subscribe((data) => {
+    this.subscriptionTwo = this.webSocketService.listen("Get Question").subscribe((data) => {
       this.question = data;
-      this.gameService.getQuestion(data)
+      // this.gameService.getQuestion(data)
     })
 
+  }
+
+  ngOnDestroy(): void {
+      this.subscription?.unsubscribe()
+      this.subscriptionTwo?.unsubscribe();
   }
 
 }

@@ -27,10 +27,13 @@ export class CurrentwordContestantComponent implements OnInit {
 
     this.webSocketService.emit("Get Player Type", ({roomName: this.roomName, playerName: this.playerName}));
 
-  this.gameService.selectedWord?.subscribe((data)=> {
+  // this.gameService.question?.subscribe((data)=> {
+  //   this.question = data;
+  //  })
+   
+  this.webSocketService.listen("Get Question").subscribe((data) => {
     this.question = data;
-   })
-  
+  })
    this.webSocketService.listen("Get Player Type").subscribe((data:any)=> {
     if(data.playerTag!= null){
       this.player = data;
