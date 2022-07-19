@@ -2,20 +2,29 @@
 <div class="container-fluid">
     <div class="row game-room">
         <img class="game-room__header" src="../../../assets/gameroom.png" alt="">
-            <h6>You are playing as {{player.playerTag == null ? 'Teacher' : player.playerTag}}</h6>
+            <h6>{{player.playerTag == null ? 'Teacher' : player.playerTag | titlecase }}</h6>
 
 
              <!-- Contestant -->
             <div class="center col-sm-12 col-md-6 col-lg-5" *ngIf="player.playerTag == 'contestant'">
-                <app-timer></app-timer>
+                <app-timer [timerStart]="timerSubject.asObservable()"></app-timer>
                 <app-currentword-contestant></app-currentword-contestant>
             </div>
 
 
             <!-- HOST -->
             <div class=" center col-sm-12 col-md-6 col-lg-5" *ngIf="player.playerTag == 'host'">
-                <app-timer></app-timer>
-                <app-currentword [newWord]="wordSubject.asObservable()"></app-currentword>
+                <div class="row">
+                    <div class="col-6">
+                        <app-timer [timerStart]="timerSubject.asObservable()"></app-timer>
+                    </div>
+                    <div class="col-6">
+                         <app-currentword [newWord]="wordSubject.asObservable()"></app-currentword>
+                    </div>
+                   
+               
+                </div>
+                
                 <h3>Current Contestants</h3>
                 <ul class="list-group">
                     <li *ngFor="let player of roomMembers" [style.display]="player.playerTag !== 'contestant' ? 'none' : 'block'" class="list-group-item">{{player.student}} <span *ngIf="player.ansQuestion" class="game-room__contestant--marks">Answered</span> </li>
@@ -24,17 +33,25 @@
             </div>
 
             <!-- ADMIN -->
-            <div class="center col-sm-12 col-md-6 col-lg-5" *ngIf="player.playerTag == null">
-                <app-timer [timerStart]="timerSubject.asObservable()"></app-timer>
-                <app-currentword></app-currentword>
+            <div class=" center col-sm-12 col-md-6 col-lg-5" *ngIf="player.playerTag == null">
+                <div class="row">
+                    <div class="col-6">
+                        <app-timer [timerStart]="timerSubject.asObservable()"></app-timer>
+                    </div>
+                    <div class="col-6">
+                         <app-currentword [newWord]="wordSubject.asObservable()"></app-currentword>
+                    </div>
+                   
+               
+                </div>
 
                 <h3>Current Contestants</h3>
                 <ul class="list-group">
                     <li *ngFor="let player of roomMembers" [style.display]="player.playerTag !== 'contestant' ? 'none' : 'block'" class="list-group-item">{{player.student}} 
                         <span class="position-absolute top-25 end-0">
                             <span *ngFor="let mark of player.currentGame">
-                                <span class="game-room__contestant--marks"  *ngIf="mark == 'Correct'"><img class="marker game-room__contestant--marks" src="../../assets/correct.png" alt=""></span>
-                                <span class="game-room__contestant--marks"  *ngIf="mark == 'Incorrect'" ><img class="marker game-room__contestant--marks" src="../../assets/incorrect.png" alt="" ></span>
+                                <span class="game-room__contestant--marks"  *ngIf="mark == 'Correct'" emoji="😃"></span>
+                                <span class="game-room__contestant--marks"  *ngIf="mark == 'Incorrect'"emoji="😔" ></span>
                             </span>
                         </span>
                     </li>

@@ -1,0 +1,32 @@
+[debug] [2022-07-19T21:12:04.103Z] ----------------------------------------------------------------------
+[debug] [2022-07-19T21:12:04.107Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\kt-fi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-07-19T21:12:04.108Z] CLI Version:   10.0.1
+[debug] [2022-07-19T21:12:04.108Z] Platform:      win32
+[debug] [2022-07-19T21:12:04.108Z] Node Version:  v14.17.6
+[debug] [2022-07-19T21:12:04.111Z] Time:          Tue Jul 19 2022 23:12:04 GMT+0200 (Central European Summer Time)
+[debug] [2022-07-19T21:12:04.111Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-07-19T21:12:04.227Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-07-19T21:12:04.227Z] > authorizing via signed-in user (katie5five.5@gmail.com)
+[debug] [2022-07-19T21:12:04.227Z] [iam] checking project whatahoot-4b137 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-07-19T21:12:04.231Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-07-19T21:12:04.231Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-07-19T21:12:04.364Z] <<< HTTP RESPONSE 200 {"date":"Tue, 19 Jul 2022 21:12:04 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-07-19T21:12:04.439Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/whatahoot-4b137:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-07-19T21:12:05.169Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 19 Jul 2022 21:12:05 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=659","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-07-19T21:12:05.171Z] > refreshing access token with scopes: []
+[debug] [2022-07-19T21:12:05.171Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-07-19T21:12:05.257Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Tue, 19 Jul 2022 21:12:05 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-07-19T21:12:05.314Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/whatahoot-4b137 [none]
+[debug] [2022-07-19T21:12:05.567Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/whatahoot-4b137 200
+[debug] [2022-07-19T21:12:05.568Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/whatahoot-4b137 {"projectId":"whatahoot-4b137","projectNumber":"713629480573","displayName":"whatahoot","name":"projects/whatahoot-4b137","resources":{"hostingSite":"whatahoot-4b137"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'whatahoot-4b137'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-07-19T21:12:05.581Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-07-19T21:12:05.581Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>

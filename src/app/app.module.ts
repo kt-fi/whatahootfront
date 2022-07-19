@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TimerComponent } from './game/components/timer/timer.component';
 import { CurrentwordComponent } from './game/components/currentword/currentword.component';
 import { CurrentwordContestantComponent } from './game/components/currentword-contestant/currentword-contestant.component';
+import { EmojiDirectiveDirective } from './emoji-directive.directive';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CurrentwordContestantComponent } from './game/components/currentword-co
     ErrorComponent,
     TimerComponent,
     CurrentwordComponent,
-    CurrentwordContestantComponent
+    CurrentwordContestantComponent,
+    EmojiDirectiveDirective
   ],
   imports: [
     BrowserModule,
