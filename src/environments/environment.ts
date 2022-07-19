@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://schoolgame.herokuapp.com/'
+  url: 'https://pure-wave-61675.herokuapp.com/'
 };
 
 /*
