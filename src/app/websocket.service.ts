@@ -10,7 +10,7 @@ import {environment} from '../environments/environment.prod'
 export class WebsocketService {
   rooms:any = new Subject();
   socket: any;
-  uri: string = 'http://localhost:3000/';
+  uri: string = 'https://pure-wave-61675.herokuapp.com/';
 
 
   constructor() { 
