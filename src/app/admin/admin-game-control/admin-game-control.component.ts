@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { HandleErrorService } from 'src/app/error/handle-error.service';
 import { WebsocketService } from 'src/app/websocket.service';
 
 @Component({
@@ -17,7 +18,10 @@ export class AdminGameControlComponent implements OnInit, OnDestroy {
   id:string = ""
   tag:string = ""
   
-  constructor(private activeRoute: ActivatedRoute, private route: Router, private webSocketService: WebsocketService) { }
+  constructor(private activeRoute: ActivatedRoute,
+      private route: Router,
+      private webSocketService: WebsocketService,
+      ) { }
 
   ngOnInit(): void {
     
@@ -25,8 +29,13 @@ export class AdminGameControlComponent implements OnInit, OnDestroy {
     this.webSocketService.emit("Get Room Members", this.roomName)
     
     this.subscriptions?.push(
-      this.webSocketService.listen("Update Room Members").subscribe((data)=>{
-      this.roomMembers = data;
+      this.webSocketService.listen("Update Room Members").subscribe((data:any)=>{
+
+        if(this.roomName == data.roomName){
+          this.roomMembers = data.roomMembers;
+        }else{
+          return;
+        }
     }),
       this.webSocketService.listen("Start Game").subscribe((data)=>{
       this.route.navigate([`game/${this.roomName}/admin`])

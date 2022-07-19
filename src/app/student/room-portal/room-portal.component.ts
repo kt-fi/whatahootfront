@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -26,7 +27,15 @@ subscriptionTwo?:Subscription;
     this.webSocketService.emit("Get Room Members", this.roomName);
 
  
-     this.subscription = this.webSocketService.listen("Update Room Members").subscribe(data => this.roomMembers = data)
+     this.subscription = this.webSocketService.listen("Update Room Members").subscribe((data:any) => {
+      if(this.roomName == data.roomName){
+        this.roomMembers = data.roomMembers;
+      }else{
+        return;
+      }
+      
+    }
+      )
     this.subscriptionTwo = this.webSocketService.listen("Start Game").subscribe(()=>{
       this.route.navigate([`game/${this.roomName}/${this.player}`])
     })

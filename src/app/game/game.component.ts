@@ -44,60 +44,45 @@ export class GameComponent implements OnInit {
     if(data.playerTag!= null){
       this.player = data;
     } else{
-      this.player.playerTag = "admin"
+      null
     }
     })
 
-      
-
       this.webSocketService.emit("Get Room Members", this.roomName)
-      this.webSocketService.listen("Update Room Members").subscribe((data)=>{
-
-        this.roomMembers = data;
+      this.webSocketService.listen("Update Room Members").subscribe((data:any)=>{
+        if(this.roomName == data.roomName){
+          this.roomMembers = data.roomMembers;
+        }else{
+          return;
+        }
+        
       })
 
-      this.webSocketService.listen("Get Question").subscribe((data) => {
-        console.log("got question")
-        this.question = data;
+      this.webSocketService.listen("Get Question").subscribe((data:any) => {
+        if(this.roomName == data.roomName){
+          this.question = data.question;
+        }else{
+          return
+        }
       })
 
-  
-      this.webSocketService.listen("Update Scores").subscribe((data)=> {
-        this.roomMembers = data;
+      this.webSocketService.listen("Update Scores").subscribe((data:any)=> {
+        if(this.roomName == data.roomName){
+          this.roomMembers = data.students;
+        }else{
+          return
+        }
+        
       })
-
   }
-
-  // startTimer(){
-  //   this.webSocketService.emit("Start Timer", this.roomName)
-  // }
 
   startTimer(){
     this.timerSubject.next();
   }
 
-  
-
 nextQuestion(){
-  // this.webSocketService.emit("Reset Timer", this.roomName)
-  // this.webSocketService.emit("Get Question", this.roomName)
   this.wordSubject.next();
 }
-
-
-selectAnswer(givenAnswer:any, id:any){
-  let answer = this.question.correct;
-  if(this.question.answers[answer] === givenAnswer){
-    this.webSocketService.emit("Answered Question", {answer: "Correct", room: this.roomName, id:id})
-  }else{
-    this.webSocketService.emit("Answered Question", {answer: "Incorrect", room: this.roomName, id:id})
-  }
-}
-
-updateScores(){
-
-}
- 
 
 
 }

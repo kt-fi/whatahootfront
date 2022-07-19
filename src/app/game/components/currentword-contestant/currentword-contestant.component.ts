@@ -31,10 +31,16 @@ export class CurrentwordContestantComponent implements OnInit {
   //   this.question = data;
   //  })
    
-  this.webSocketService.listen("Get Question").subscribe((data) => {
+  this.webSocketService.listen("Get Question").subscribe((data:any) => {
     
-    this.question = data;
-    this.answered = false;
+    if(this.roomName == data.roomName){
+      this.question = data.question;
+      this.answered = false;
+    }else{
+      return
+    }
+    
+    
   })
    this.webSocketService.listen("Get Player Type").subscribe((data:any)=> {
     if(data.playerTag!= null){

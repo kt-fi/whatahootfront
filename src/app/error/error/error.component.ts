@@ -1,7 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { WebsocketService } from 'src/app/websocket.service';
+import { HandleErrorService } from '../handle-error.service';
 
 
 @Component({
@@ -31,12 +32,15 @@ import { WebsocketService } from 'src/app/websocket.service';
 export class ErrorComponent implements OnInit, OnDestroy {
 
   subscription?:Subscription;
+  subscriptionTwo?:Subscription;
 
+  @Input()
   error:string | any = "";
   isOpen:boolean = false
-  constructor(private webSocketService: WebsocketService) { }
+  constructor(private webSocketService: WebsocketService, private handleError:HandleErrorService) { }
 
   ngOnInit(): void {
+
    this.subscription = this.webSocketService.listen('error').subscribe((data)=>{
       this.error = data;
       this.isOpen = true;
@@ -44,9 +48,11 @@ export class ErrorComponent implements OnInit, OnDestroy {
         this.isOpen = false;
       }, 8000)
     })
+    this.subscriptionTwo = this.handleError.error.subscribe((error:any) => this.error = error)
   }
 
   ngOnDestroy(): void {
       this.subscription?.unsubscribe();
+      this.subscriptionTwo?.unsubscribe();
   }
 }

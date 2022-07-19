@@ -1,4 +1,4 @@
 <h3>Possible Answers</h3>
     <ul *ngIf="question" class="list-group">
-        <li *ngFor="let option of question.answers" value="option" class="list-group-item"  (click)="selectAnswer(option, player.id)"> {{option}} </li>       
+        <button *ngFor="let option of question.answers" value="option" class="list-group-item" [disabled]="answered"  (click)="selectAnswer(option, player.id)"> {{option}} </button>       
     </ul>
