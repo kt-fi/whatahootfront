@@ -22,7 +22,7 @@ export class AdminLoginComponent implements OnInit, OnDestroy {
   rooms:any;
   ngOnInit(): void {
     
-    this.subscription = this.webSocketsService.listen('getRooms').subscribe((data)=>{
+     this.webSocketsService.listen('getRooms').subscribe((data)=>{
       this.rooms = data;
     })
   }
@@ -37,6 +37,6 @@ export class AdminLoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.subscription?.unsubscribe();
+      // this.subscription?.unsubscribe();
   }
 }
