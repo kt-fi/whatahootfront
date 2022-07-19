@@ -11,7 +11,7 @@ export class RoomsService {
 
   createRoom(roomName:string):any {
     console.log(roomName)
-    return this.http.post(environment.url, {"room": roomName})
+    return this.http.post('https://pure-wave-61675.herokuapp.com/', {"room": roomName})
   }
 
 }
