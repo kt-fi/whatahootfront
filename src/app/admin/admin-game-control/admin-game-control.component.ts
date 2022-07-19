@@ -28,7 +28,7 @@ export class AdminGameControlComponent implements OnInit, OnDestroy {
     this.roomName = this.activeRoute.snapshot.paramMap.get('roomName')
     this.webSocketService.emit("Get Room Members", this.roomName)
     
-    this.subscriptions?.push(
+ 
       this.webSocketService.listen("Update Room Members").subscribe((data:any)=>{
 
         if(this.roomName == data.roomName){
@@ -36,11 +36,11 @@ export class AdminGameControlComponent implements OnInit, OnDestroy {
         }else{
           return;
         }
-    }),
+    })
       this.webSocketService.listen("Start Game").subscribe((data)=>{
       this.route.navigate([`game/${this.roomName}/admin`])
     })
-    )
+    
   }
 
   sendTag(){
@@ -58,8 +58,8 @@ export class AdminGameControlComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions?.forEach((subscription:Subscription)=>{
-      subscription.unsubscribe()
-    })
+    // this.subscriptions?.forEach((subscription:Subscription)=>{
+    //   subscription.unsubscribe()
+    // })
 }
 }
