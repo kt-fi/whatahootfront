@@ -11,7 +11,18 @@ $light-gray: #595260;
 
 .list-group-item{
     background-color: $dark-gray;
+    border-bottom: 1px solid white;
+   
     color: white;
+
+    &:first-child{
+        border-top: 3px solid brown ;
+
+    }
+
+    &:last-child{
+        border-bottom: 3px solid brown ;
+    }
 }
 
 .center{

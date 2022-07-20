@@ -9,6 +9,11 @@ $light-gray: #595260;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #d6b44f;
+
     font-family: 'Pangolin', cursive;
+}
+
+body{
+    background-image: url("https://img.freepik.com/free-vector/arcade-game-world-pixel-scene_24640-45887.jpg?t=st=1658350844~exp=1658351444~hmac=aa9562965527ff177eb872bc5f141df9def808623cb557d48c76658fd5d32484&w=740");
+    background-position: 50% 10%;
 }
