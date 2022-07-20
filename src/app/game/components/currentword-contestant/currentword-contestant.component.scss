@@ -10,7 +10,8 @@ $light-gray: #595260;
 }
 
 .list-group-item{
-    background-color: $light-green;
+    background-color: $dark-gray;
+    color: white;
 }
 
 .center{
@@ -18,5 +19,5 @@ $light-gray: #595260;
 }
 
 .list-group-item{
-    background-color: $light-green;
+    background-color: $dark-gray
 }

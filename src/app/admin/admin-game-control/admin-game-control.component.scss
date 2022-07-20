@@ -6,7 +6,19 @@ $dark-gray: #2B2B2B;
 $light-gray: #595260;
 
 .list-group-item{
-    background-color: $light-green;
+    background-color: $dark-gray;
+    border-bottom: 1px solid white;
+   
+    color: white;
+
+    &:first-child{
+        border-top: 3px solid brown ;
+
+    }
+
+    &:last-child{
+        border-bottom: 3px solid brown ;
+    }
 }
 
 .game-room{
@@ -46,13 +58,13 @@ $light-gray: #595260;
     }
 
     &__dropdown{
-    background-color: #9FE6A0;
+    background-color: $dark-gray;
     
 
     &--span{
         width: 55%;
         text-align: right;
-        background-color: $light-green;
+        background-color: $dark-gray;
     }
 }
 }

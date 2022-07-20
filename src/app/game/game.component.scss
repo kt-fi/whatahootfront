@@ -10,15 +10,30 @@ $light-gray: #595260;
 }
 
 .list-group-item{
-    background-color: $light-green;
+    background-color: $dark-gray;
+    border-bottom: 1px solid white;
+   
+    color: white;
+
+    &:first-child{
+        border-top: 3px solid brown ;
+
+    }
+
+    &:last-child{
+        border-bottom: 3px solid brown ;
+    }
 }
 
 .game-room{
     text-align: center;
 
     &__header{
+        font-size: 40px;
+        font-weight: 700;
+        color: rgb(248, 106, 106);
         margin: 0 auto;
-        margin-top: 0.5rem;
+        margin-top: 1rem;
         margin-bottom: 1rem;;
         width: 80%;
         max-width: 300px;
@@ -28,7 +43,7 @@ $light-gray: #595260;
     &__contestant{
         
         &--marks{
-            background-color: $light-green;
+            background-color: $dark-gray;
             float: right;
             color: #0d6efd;
             font-weight: 700;
@@ -37,7 +52,7 @@ $light-gray: #595260;
     
 
     &__tag{
-        background-color: #9FE6A0;
+        background-color: $dark-gray;
     
             &--span{
                 width: 40%;
