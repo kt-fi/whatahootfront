@@ -1,4 +1,7 @@
+.wrapper{
+min-height: 100%;;
 
+}
 
 .admin{
     text-align: center;
@@ -18,35 +21,35 @@
         
         &--container {
             height: 35vh;
+            min-height: min-content;
+            
         }
     }
 
     &__main {
 
         &--container{
-            height: 65%;
-            
-        }
-
-        &--buttons {
-            position: absolute;
-            bottom: 0;
-           width: 95%;
-            right: 0;
-            margin: 2.5%;
-
-            @media screen and (max-height: 650px) {
-                position: relative;
-            }
+            height: 65vh;
+            min-height: min-content;
         }
 
 
+       
+
+    }
+
+    form {
+    
+        height: 100%;
+        position: relative;
     }
 
     &__form{
         margin: 0 auto;
         text-align: left;
         padding: 10px;
+        height: 100%;
+        position: relative;
         
         &--input{
             height: 60px;
@@ -63,16 +66,34 @@
             }
         }
 
+        
+        &--buttons {
+
+            width: 95%;
+             right: 0;
+             margin: 2.5%;
+            position: absolute;
+            bottom: 0;
+            
+             
+         }
+
         &--button{
             width: 100%;
             margin: 10px 0px 0 0;
             font-size: 1.3rem;
 
+              
+
             &:first-child{
-                height: 150px;
+                height: minmax(50%, 300px);
+                padding: 15px;
                 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
                 font-size: 2rem;
                 font-weight: 800;
+
+             
+
             }
         }
     }

@@ -13,6 +13,11 @@ $light-gray: #595260;
     font-family: 'Pangolin', cursive;
 }
 
+
+    html, body {
+        min-height:100%;height:100%;
+      }
+
 body{
     background-image: url("../src/assets/back.jpg");
     background-position: center;

@@ -1,20 +1,23 @@
 <div class="container-fluid admin">
     <div class="row"> 
-        <div class="col-12 admin__header--container">
+        <div class="wrapper">
+<div class="col-12 admin__header--container">
             <div class="col-12">
              <img class="mt-5 admin__logo" src="../../../assets/logo.png" alt="">
         </div>
             <img src="../../../assets/admilogin.png" class="admin__header col-sm-12" alt="">
-        </div>
+       
         
         <div class="admin__main--container"> 
         <form class="admin__form col-sm-12 col-md-7 col-xl-4" #formRef="ngForm" (ngSubmit)="submit(formRef)">
             <input type="text" class="admin__form--input form-control" placeholder="Create New Room" name="gameName" ngModel>
-            <div class="col-12 admin__main--buttons">
+            <div class="col-12 admin__form--buttons">
                     <input type="submit" value="GO!"  class="btn btn-primary admin__form--button " />
                     <input type="reset" value="Change Name" class="btn btn-warning admin__form--button " />  
             </div>  
         </form>
         </div>
+        </div>
+        
     </div>
-</div>
+</div> </div>

@@ -10,7 +10,7 @@
        
         <div class="col-sm-12 col-md-7 col-xl-4 main-div">
             <input class="form-control student__name--input" type="text" [(ngModel)]="name" placeholder="Choose a Username">
-            <img class="student__header--chooseRoom" src="../../../assets/selectgame.png" alt="">
+            <h3 class="student__selectgame">Select Game Room:</h3>
             <ul class="list-group mt-2">
               <li class="list-group-item" *ngFor="let room of rooms" (click)="roomSelected(room.roomName)" >{{room.roomName}}</li>
             </ul>
