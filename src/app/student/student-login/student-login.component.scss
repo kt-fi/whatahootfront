@@ -46,6 +46,16 @@ $light-gray: #595260;
             height: 60px;
             font-size: 1.5rem;
             font-weight: 700;
+            background-color: rgba(0, 0, 0, 0.322);
+            border: 2px solid black;
+            color:white;
+
+            &::placeholder{
+                color:  rgb(206, 206, 206);
+                text-transform: uppercase;
+                text-align: center;
+            }
+
         }
     }
 }
