@@ -2,7 +2,7 @@
 
 .admin{
     text-align: center;
-
+    
     &__logo{
         margin: 0 auto;
         margin-top: 8rem;
@@ -16,16 +16,44 @@
         width: 70%;
         max-width: 300px;
         
+        &--container {
+            height: 35vh;
+        }
+    }
+
+    &__main {
+
+        &--container{
+            height: 65%;
+        }
+
+        &--buttons {
+            position: absolute;
+            bottom: 0;
+           width: 95%;
+            right: 0;
+            margin: 2.5%;
+        }
     }
 
     &__form{
         margin: 0 auto;
         text-align: left;
         padding: 10px;
+        
         &--input{
             height: 60px;
             font-size: 1.5rem;
             font-weight: 700;
+            background-color: rgba(0, 0, 0, 0.322);
+            border: 2px solid black;
+            color:white;
+
+            &::placeholder{
+                color:  rgb(206, 206, 206);
+                text-transform: uppercase;
+                text-align: center;
+            }
         }
 
         &--button{
