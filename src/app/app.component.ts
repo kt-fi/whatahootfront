@@ -18,7 +18,6 @@ export class AppComponent implements OnInit{
     //   alert("Error")
     // })
 
-    this.webSocketsService.emit('test event', "hello")
     this.webSocketsService.listen('getRooms').subscribe((data)=>{
 
     })
